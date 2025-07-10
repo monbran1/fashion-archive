@@ -1,218 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Brand Bookshelf</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body { background: #d5c8b6; margin: 0; font-family: 'Yu Gothic', 'Meiryo', sans-serif;}
-    .shelf { background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'); background-size:cover; padding:40px 0 60px 0; min-height:100vh;}
-    .books { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px;}
-    .book {
-      width: 86px; height: 230px; background: #fff;
-      border-radius: 9px 9px 4px 4px; box-shadow:0 4px 18px #44240244;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      cursor: pointer; transition: transform .17s;
-      position: relative; overflow: hidden;
-      border-left: 7px solid #bfa671;
-      border-right: 7px solid #bfa671;
-    }
-    .book:hover { transform: translateY(-10px) scale(1.07);}
-    .book-logo { width:56px; height:56px; object-fit:contain; margin: 16px 0 8px;}
-    .book-title { font-size: 1em; font-weight: bold; color: #31231d; text-align:center; margin-bottom:7px;}
-    .book-sub { font-size: .85em; color:#967747; text-align:center;}
-    .brand-detail-bg { position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(40,30,10,0.80); z-index:80; display:none;}
-    .brand-detail { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; min-width:330px; max-width:94vw; border-radius:15px; box-shadow:0 8px 32px #311c0e99; z-index:100; display:none; padding:0; overflow:hidden;}
-    .brand-header { display:flex; align-items:center; background: #ece6da; padding:24px 28px;}
-    .brand-header-logo { width:80px; height:80px; object-fit:contain; margin-right:26px;}
-    .brand-header-info { flex:1;}
-    .brand-header-name { font-size:1.65em; font-weight:bold; margin-bottom:6px;}
-    .brand-header-tags { margin-top:7px;}
-    .tag { background:#bfa671; color:#fff; font-size:.87em; padding:2px 12px; border-radius:14px; margin-right:6px;}
-    .brand-content { padding:20px 24px 24px 24px;}
-    .brand-section { margin-bottom:20px;}
-    .section-title { font-weight:bold; font-size:1.09em; margin-bottom:6px; color:#967747;}
-    .brand-link { color: #a84d2d; text-decoration:underline; cursor:pointer;}
-    .item-list { display:flex; gap:16px; flex-wrap:wrap;}
-    .item-card { background:#f5f2ec; border-radius:10px; padding:10px 8px; width:120px;}
-    .item-card img { width:100%; height:75px; object-fit:cover; border-radius:7px;}
-    .item-name { font-weight:bold; font-size:.95em; margin:6px 0 2px 0;}
-    .item-price { color:#aa4e22; font-size:.89em;}
-    .close-btn { position:absolute; right:20px; top:13px; font-size:1.8em; color:#ba9f6a; background:none; border:none; cursor:pointer;}
-    @media (max-width:600px){ .brand-detail{min-width:96vw;} .brand-header{flex-direction:column; align-items:flex-start;} .brand-header-logo{margin-right:0; margin-bottom:12px;} }
-  </style>
+    <meta charset="UTF-8">
+    <title>FASHION ARCHIVE | ブランド本棚</title>
+    <style>
+        body { font-family: sans-serif; background: #f8f8f8; color: #222; margin: 0; }
+        .shelf { background: #deb887; padding: 32px 0 12px 0; margin: 0 0 36px 0; border-radius: 0 0 36px 36px; }
+        .title { text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 18px;}
+        .books { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+        .book { width: 140px; background: #fff; border-radius: 16px; box-shadow: 0 3px 10px #0002; text-align: center; padding: 16px 8px; cursor: pointer; }
+        .book img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 12px; }
+        .book-title { font-weight: bold; }
+        .book-country { font-size: 0.9em; color: #888; margin-bottom: 8px;}
+    </style>
 </head>
 <body>
-  <div class="shelf">
-    <div class="books">
-      <div class="book" data-brand="LV" style="background:#faf6ed;">
-        <img class="book-logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Louis_Vuitton_logo_and_wordmark.svg" alt="Louis Vuitton logo">
-        <div class="book-title">Louis Vuitton</div>
-        <div class="book-sub">ルイ・ヴィトン</div>
-      </div>
-      <div class="book" data-brand="Dior" style="background:#f4ebf7;">
-        <img class="book-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Dior_Logo.svg" alt="Dior logo">
-        <div class="book-title">DIOR</div>
-        <div class="book-sub">ディオール</div>
-      </div>
-      <div class="book" data-brand="YSL" style="background:#f2f1ee;">
-        <img class="book-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Yves_Saint_Laurent_logo.svg" alt="YSL logo">
-        <div class="book-title">YSL</div>
-        <div class="book-sub">イヴ・サンローラン</div>
-      </div>
-      <div class="book" data-brand="CELINE" style="background:#efeae2;">
-        <img class="book-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Celine_logo.svg" alt="CELINE logo">
-        <div class="book-title">CELINE</div>
-        <div class="book-sub">セリーヌ</div>
-      </div>
-      <div class="book" data-brand="COMOLI" style="background:#f6faf3;">
-        <img class="book-logo" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f078954-e1d6-4660-a4e2-06f0fc93c3bc.png" alt="COMOLI logo">
-        <div class="book-title">COMOLI</div>
-        <div class="book-sub">コモリ</div>
-      </div>
+    <div class="shelf">
+        <div class="title">ヨーロッパ ブランド本棚</div>
+        <div class="books">
+            <div class="book" onclick="window.open('https://www.louisvuitton.com/', '_blank')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Louis_Vuitton_logo_and_wordmark.svg" alt="LV">
+                <div class="book-title">Louis Vuitton</div>
+                <div class="book-country">フランス</div>
+            </div>
+            <div class="book" onclick="window.open('https://www.dior.com/', '_blank')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Dior_Logo.svg" alt="Dior">
+                <div class="book-title">Dior</div>
+                <div class="book-country">フランス</div>
+            </div>
+            <div class="book" onclick="window.open('https://www.celine.com/', '_blank')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Celine_logo.png" alt="Celine">
+                <div class="book-title">Celine</div>
+                <div class="book-country">フランス</div>
+            </div>
+            <div class="book" onclick="window.open('https://www.cartier.com/ja-jp', '_blank')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Cartier_logo.svg" alt="Cartier">
+                <div class="book-title">Cartier</div>
+                <div class="book-country">フランス</div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="brand-detail-bg" id="detail-bg"></div>
-  <div class="brand-detail" id="detail-modal"></div>
-
-  <script>
-    // ブランドデータ（ここを編集で追加可能！）
-    const brands = {
-      "LV": {
-        logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Louis_Vuitton_logo_and_wordmark.svg",
-        name: "Louis Vuitton",
-        jp: "ルイ・ヴィトン",
-        year: "1854",
-        country: "フランス・パリ",
-        tags: ["ラグジュアリー", "レザー", "モノグラム"],
-        concept: "旅と伝統の融合。世界の象徴的なラグジュアリーブランド。",
-        designers: [
-          { name: "キム・ジョーンズ", link: "Dior" },
-          { name: "マルク・ジェイコブス", link: null },
-          { name: "ヴァージル・アブロー", link: null }
-        ],
-        items: [
-          { name: "スピーディ", price: "¥238,000", img: "https://cdn.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-スピーディ-30-ダミエ-エベヌ-バッグ--N41372_PM2_Front%20view.png" },
-          { name: "アルマ", price: "¥299,200", img: "https://cdn.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-アルマ-BB-ダミエ-エベヌ-バッグ--N41221_PM2_Front%20view.png" }
-        ]
-      },
-      "Dior": {
-        logo: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Dior_Logo.svg",
-        name: "Dior",
-        jp: "ディオール",
-        year: "1946",
-        country: "フランス・パリ",
-        tags: ["ラグジュアリー", "クチュール", "エレガンス"],
-        concept: "エレガンスの再定義。革新と伝統の共存。",
-        designers: [
-          { name: "キム・ジョーンズ", link: "LV" },
-          { name: "イヴ・サンローラン", link: "YSL" },
-          { name: "マリア・グラツィア・キウリ", link: null }
-        ],
-        items: [
-          { name: "レディディオール", price: "¥792,000", img: "https://www.dior.com/couture/ecommerce/media/catalog/product/l/e/1686570274_M0538ONGE_M900_E01_ZHC.jpg" },
-          { name: "サドルバッグ", price: "¥640,000", img: "https://www.dior.com/couture/ecommerce/media/catalog/product/d/j/1686570273_M0446CRIW_M900_E01_ZHC.jpg" }
-        ]
-      },
-      "YSL": {
-        logo: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Yves_Saint_Laurent_logo.svg",
-        name: "Yves Saint Laurent",
-        jp: "イヴ・サンローラン",
-        year: "1961",
-        country: "フランス・パリ",
-        tags: ["ラグジュアリー", "フレンチ", "イノベーター"],
-        concept: "モードを変革した“サンローラン”美学。",
-        designers: [
-          { name: "イヴ・サンローラン", link: null },
-          { name: "エディ・スリマン", link: "CELINE" }
-        ],
-        items: [
-          { name: "サック・ド・ジュール", price: "¥429,000", img: "https://www.ysl.com/dw/image/v2/AAJN_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw4b868da4/2023/large/SAINT-LAURENT_330958B680N1000_A.jpg?sw=500&sh=667&sm=fit" }
-        ]
-      },
-      "CELINE": {
-        logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Celine_logo.svg",
-        name: "CELINE",
-        jp: "セリーヌ",
-        year: "1945",
-        country: "フランス・パリ",
-        tags: ["ラグジュアリー", "パリ", "ミニマル"],
-        concept: "ミニマルとエレガンスを極めたモダン・パリジャン。",
-        designers: [
-          { name: "エディ・スリマン", link: "YSL" }
-        ],
-        items: [
-          { name: "ラゲージ", price: "¥396,000", img: "https://www.celine.com/on/demandware.static/-/Sites-masterCatalog/default/dw28da085d/images/large/176103DLS.38NO_1.jpg" }
-        ]
-      },
-      "COMOLI": {
-        logo: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f078954-e1d6-4660-a4e2-06f0fc93c3bc.png",
-        name: "COMOLI",
-        jp: "コモリ",
-        year: "2005",
-        country: "日本・東京",
-        tags: ["ミニマル", "ジャパニーズ"],
-        concept: "日常に溶け込む特別感。素材と着心地重視の現代日本ブランド。",
-        designers: [
-          { name: "小森啓", link: null }
-        ],
-        items: [
-          { name: "シグネチャーシャツ", price: "¥27,500", img: "https://cdn.store-hc.com/upload/save_image/01122151_5e1a776ef3a4a.jpg" }
-        ]
-      }
-    };
-
-    // 本クリックで詳細表示
-    document.querySelectorAll('.book').forEach(book => {
-      book.onclick = () => showDetail(book.dataset.brand);
-    });
-
-    function showDetail(key) {
-      const b = brands[key];
-      const modal = document.getElementById('detail-modal');
-      let designers = "";
-      b.designers.forEach(d => {
-        if (d.link && brands[d.link]) {
-          designers += `<a class="brand-link" onclick="showDetail('${d.link}')">${d.name}</a> / `;
-        } else {
-          designers += d.name + " / ";
-        }
-      });
-      designers = designers.replace(/ \/ $/, '');
-
-      let items = "";
-      b.items.forEach(item => {
-        items += `<div class="item-card">
-          <img src="${item.img}" alt="${item.name}">
-          <div class="item-name">${item.name}</div>
-          <div class="item-price">${item.price}</div>
-        </div>`;
-      });
-
-      modal.innerHTML = `
-        <button class="close-btn" onclick="closeDetail()">&times;</button>
-        <div class="brand-header">
-          <img class="brand-header-logo" src="${b.logo}">
-          <div class="brand-header-info">
-            <div class="brand-header-name">${b.name} <span style="font-size:0.8em;color:#a98c5d;">${b.jp}</span></div>
-            <div>${b.year}年設立 | ${b.country}</div>
-            <div class="brand-header-tags">${b.tags.map(t=>`<span class="tag">${t}</span>`).join(' ')}</div>
-          </div>
+    <div class="shelf">
+        <div class="title">日本 ブランド本棚</div>
+        <div class="books">
+            <div class="book" onclick="window.open('https://comoli.jp/', '_blank')">
+                <img src="https://comoli.jp/wp-content/themes/comoli2016/images/logo.png" alt="COMOLI">
+                <div class="book-title">COMOLI</div>
+                <div class="book-country">日本</div>
+            </div>
+            <div class="book" onclick="window.open('https://auralee.jp/', '_blank')">
+                <img src="https://auralee.jp/wp-content/themes/auralee/images/logo.png" alt="auralee">
+                <div class="book-title">auralee</div>
+                <div class="book-country">日本</div>
+            </div>
         </div>
-        <div class="brand-content">
-          <div class="brand-section"><div class="section-title">ブランドコンセプト</div><div>${b.concept}</div></div>
-          <div class="brand-section"><div class="section-title">主なデザイナー</div><div>${designers}</div></div>
-          <div class="brand-section"><div class="section-title">定番アイテム</div><div class="item-list">${items}</div></div>
-        </div>
-      `;
-      document.getElementById('detail-bg').style.display = "block";
-      modal.style.display = "block";
-    }
-    function closeDetail() {
-      document.getElementById('detail-modal').style.display = "none";
-      document.getElementById('detail-bg').style.display = "none";
-    }
-    document.getElementById('detail-bg').onclick = closeDetail;
-  </script>
+    </div>
 </body>
 </html>
