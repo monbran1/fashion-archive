@@ -3,30 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>COMOLI | ファッションブランドアーカイブ</title>
+  <title>ブランドアーカイブサンプル</title>
   <style>
-    body { background: #f5f5f5; font-family: 'Yu Gothic', 'Meiryo', sans-serif; margin:0; padding:0; }
-    .card { background:#fff; max-width:380px; margin:40px auto; border-radius:14px; box-shadow:0 4px 12px #0002; padding:24px; }
-    img { width:100%; border-radius:10px; }
-    h1 { font-size:2rem; margin:14px 0 8px; }
-    .year { color:#666; font-size:0.96rem; margin-bottom:12px; }
-    .desc { font-size:1.1rem; margin-bottom:16px; }
-    .tag { display:inline-block; background:#800020; color:#fff; font-size:0.92rem; padding:4px 10px; border-radius:6px; margin-right:5px;}
+    body { background: #f7f6f6; font-family: 'Yu Gothic', 'Meiryo', sans-serif; margin:0; }
+    .brand { max-width:440px; background:#fff; margin:40px auto 30px auto; border-radius:16px; box-shadow:0 4px 14px #0001; padding:24px 18px 18px 18px;}
+    .brand .logo { text-align:center; margin-bottom:18px; }
+    .brand .logo img { max-width:200px; height:auto; filter:drop-shadow(0 2px 4px #0002);}
+    h1 { font-size:1.5rem; margin:0 0 8px 0; text-align:center;}
+    .brand .info { color:#555; font-size:0.97rem; text-align:center; margin-bottom:14px;}
+    .brand .tags { margin-bottom:10px; text-align:center;}
+    .tag { display:inline-block; background:#800020; color:#fff; font-size:0.93rem; padding:4px 14px; border-radius:7px; margin-right:6px;}
+    .concept { background:#f3e9ef; color:#600018; padding:10px 12px; border-radius:7px; margin-bottom:14px;}
+    .history, .designers, .items { margin-bottom:13px;}
+    .history .title, .designers .title, .items .title { font-weight:bold; color:#800020; margin-bottom:5px; }
+    .history ul, .items ul { margin:0 0 0 20px; color:#555; font-size:0.98em;}
+    .designer-link { color:#2269c4; text-decoration:underline; cursor:pointer;}
+    .brand .desc { font-size:1.06rem; color:#444; margin-bottom:14px; line-height:1.6;}
+    @media (max-width:600px){ .brand{margin:19px 0 25px 0; border-radius:12px;} }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f078954-e1d6-4660-a4e2-06f0fc93c3bc.png" alt="COMOLI ルック">
-    <h1>COMOLI</h1>
-    <div class="year">設立：2005年 | 日本</div>
-    <div>
-      <span class="tag">ミニマル</span>
-      <span class="tag">ジャパニーズ</span>
-    </div>
-    <div class="desc">
-      COMOLI（コモリ）は、2005年設立の日本発ブランド。<br>
-      「日本の気候・風土に合った服」をテーマに、シンプルで上質な着心地の良いアイテムが特徴。
-    </div>
+
+<!-- Cartier -->
+<div class="brand" id="Cartier">
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Cartier_logo.svg" alt="Cartier ロゴ">
   </div>
+  <h1>Cartier <span style="font-size:1.1rem;color:#b60026;">カルティエ</span></h1>
+  <div class="info">設立：1847年 | フランス・パリ</div>
+  <div class="tags">
+    <span class="tag">ラグジュアリー</span>
+    <span class="tag">ジュエリー</span>
+    <span class="tag">フレンチ</span>
+  </div>
+  <div class="concept">「王の宝石商、宝石商の王」。格式高いクラフツマンシップと独創的なデザイン。</div>
+  <div class="history">
+    <div class="title">ブランドの歴史</div>
+    <ul>
+      <li>1847年：ルイ＝フランソワ・カルティエがパリで創業</li>
+      <li>1904年：世界初の腕時計「サントス」を発表</li>
+      <li>1972年：現代的な高級ジュエリー展開が始まる</li>
+    </ul>
+  </div>
+  <div class="designers">
+    <div class="title">歴代デザイナー・主要人物</div>
+    <ul>
+      <li>ルイ＝フランソワ・カルティエ（創業者）</li>
+      <li>ジャン＝ジャック・カルティエ（2代目）</li>
+      <!-- デザイナー相互リンクが少ないため省略 -->
+    </ul>
+  </div>
+  <div class="items">
+    <div class="title">定番アイテム</div>
+    <ul>
+      <li>サントス（腕時計）</li>
+      <li>タンク（腕時計）</li>
+      <li>ラブブレスレット</li>
+    </ul>
+  </div>
+</div>
+
+<!-- COMOLI -->
+<div class="brand" id="COMOLI">
+  <div class="logo">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f078954-e1d6-4660-a4e2-06f0fc93c3bc.png" alt="COMOLI ロゴ・ルック">
+  </div>
+  <h1>COMOLI <span style="font-size:1.1rem;color:#466;">コモリ</span></h1>
+  <div class="info">設立：2005年 | 日本・東京</div>
+  <div class="tags">
+    <span class="tag">ミニマル</span>
+    <span class="tag">ジャパニーズ</span>
+  </div>
+  <div class="concept">「日常に溶け込む特別感」— 素材と着心地、空気感を大切にした服作り。</div>
+  <div class="history">
+    <div class="title">ブランドの歴史</div>
+    <ul>
+      <li>2005年：小森啓が東京で創業</li>
+      <li>2015年：青山にフラッグシップストアオープン</li>
+      <li>2020年：サステナブルライン発表</li>
+    </ul>
+  </div>
+  <div class="designers">
+    <div class="title">歴代デザイナー・主要人物</div>
+    <ul>
+      <li>小森啓（創業者・デザイナー）</li>
+      <li>（経歴：<a class="designer-link" href="#CommeDesGarcons">Comme des Garçons</a> パターン部門出身）</li>
+    </ul>
+  </div>
+  <div class="items">
+    <div class="title">定番アイテム</div>
+    <ul>
+      <li>シグネチャーシャツ</li>
+      <li>ワイドシルエットパンツ</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Louis Vuitton -->
+<div class="brand" id="LV">
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Louis_Vuitton_logo_and_wordmark.svg" alt="Louis Vuitton ロゴ">
+  </div>
+  <h1>Louis Vuitton <span style="font-size:1.1rem;color:#654;">ルイ・ヴィトン</span></h1>
+  <div class="info">設立：1854年 | フランス・パリ</div>
+  <div class="tags">
+    <span class="tag">ラグジュアリー</span>
+    <span class="tag">レザーグッズ</span>
+    <span class="tag">フレンチ</span>
+  </div>
+  <div class="concept">「旅と革新」— 伝統的クラフツマンシップと現代性を融合させる。</div>
+  <div class="history">
+    <div class="title">ブランドの歴史</div>
+    <ul>
+      <li>1854年：ルイ・ヴィトンが創業</li>
+      <li>1896年：モノグラム・キャンバス誕生</li>
+      <li>1987年：LVMHグループ発足</li>
+    </ul>
+  </div>
+  <div class="designers">
+    <div class="title">歴代デザイナー・主要人物</div>
+    <ul>
+      <li>マルク・ジェイコブス（<a class="designer-link" href="#LV">Louis Vuitton</a>→<a class="designer-link" href="#MarcJacobs">Marc Jacobs</a>）</li>
+      <li>キム・ジョーンズ（<a class="designer-link" href="#Dior">Dior</a> へ異動）</li>
+      <li>ヴァージル・アブロー（<a class="designer-link" href="#OffWhite">Off-White</a> 兼任）</li>
+      <li>ニコラ・ジェスキエール（ウィメンズ）</li>
+    </ul>
+  </div>
+  <div class="items">
+    <div class="title">定番アイテム</div>
+    <ul>
+      <li>スピーディ</li>
+      <li>アルマ</li>
+      <li>トランク</li>
+    </ul>
+  </div>
+</div>
+
+<!-- DIOR -->
+<div class="brand" id="Dior">
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Dior_Logo.svg" alt="Dior ロゴ">
+  </div>
+  <h1>Dior <span style="font-size:1.1rem;color:#555;">ディオール</span></h1>
+  <div class="info">設立：1946年 | フランス・パリ</div>
+  <div class="tags">
+    <span class="tag">ラグジュアリー</span>
+    <span class="tag">クチュール</span>
+    <span class="tag">フレンチ</span>
+  </div>
+  <div class="concept">「エレガンスの再定義」— フェミニンさと革新を両立するデザイン。</div>
+  <div class="history">
+    <div class="title">ブランドの歴史</div>
+    <ul>
+      <li>1946年：クリスチャン・ディオールが創業</li>
+      <li>1947年：「ニュールック」発表でモード界に革新</li>
+      <li>2018年：キム・ジョーンズがメンズアーティスティックディレクター就任</li>
+    </ul>
+  </div>
+  <div class="designers">
+    <div class="title">歴代デザイナー・主要人物</div>
+    <ul>
+      <li>クリスチャン・ディオール（創業者）</li>
+      <li>イヴ・サンローラン（後に<a class="designer-link" href="#YSL">YSL</a>創業）</li>
+      <li>キム・ジョーンズ（<a class="designer-link" href="#LV">Louis Vuitton</a>より移籍）</li>
+      <li>マリア・グラツィア・キウリ（ウィメンズ）</li>
+    </ul>
+  </div>
+  <div class="items">
+    <div class="title">定番アイテム</div>
+    <ul>
+      <li>レディディオール（バッグ）</li>
+      <li>サドルバッグ</li>
+      <li>ディオールオム スーツ</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ブランド間ハイパーリンク用ダミーアンカー -->
+<div id="CommeDesGarcons" style="display:none;"></div>
+<div id="MarcJacobs" style="display:none;"></div>
+<div id="OffWhite" style="display:none;"></div>
+<div id="YSL" style="display:none;"></div>
+
 </body>
 </html>
