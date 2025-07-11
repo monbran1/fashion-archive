@@ -1,758 +1,402 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Brand Library</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --wood-light: #d2b48c;
-            --wood-dark: #8b4513;
-        }
-        
-        body {
-            background-color: #f5f5f5;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-        
-        .bookshelf {
-            background: linear-gradient(135deg, var(--wood-light), var(--wood-dark));
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        
-        .bookshelf::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: 0;
-            right: 0;
-            height: 15px;
-            background: linear-gradient(135deg, #a67c52, #8b4513);
-            border-radius: 8px 8px 0 0;
-        }
-        
-        .book-spine {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            position: relative;
-            background-size: cover;
-            color: white;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            overflow: hidden;
-        }
-        
-        .book-spine:hover {
-            transform: translateY(-5px) rotateY(-10deg);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-        }
-        
-        .brand-logo {
-            max-width: 80%;
-            max-height: 50px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-        }
-        
-        .magazine-page {
-            background-image: url('https://placehold.co/1600x900/ffffff/f5f5f5?text=+');
-            background-size: cover;
-            min-height: 70vh;
-            box-shadow: 0 0 30px rgba(0,0,0,0.3);
-        }
-        
-        .timeline {
-            position: relative;
-            padding-left: 50px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--wood-dark), var(--wood-light));
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -40px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: var(--wood-dark);
-            border: 3px solid var(--wood-light);
-        }
-        
-        @media (max-width: 768px) {
-            .magazine-layout {
-                flex-direction: column;
-            }
-            
-            .book-spine {
-                width: 80px;
-                height: 180px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container mx-auto px-4 py-8">
-        <!-- ヘッダー -->
-        <header class="mb-12 text-center">
-            <h1 class="text-4xl font-bold mb-2">Fashion Brand Library</h1>
-            <p class="text-gray-600">世界中のファッションブランドを本棚で探せる雑誌風サイト</p>
-        </header>
-        
-        <!-- フィルター -->
-        <div class="flex flex-wrap justify-center gap-4 mb-8 border-b pb-6">
-            <div class="filter-group">
-                <h3 class="font-semibold mb-2 text-gray-700">国で探す</h3>
-                <div class="flex flex-wrap gap-2">
-                    <button class="country-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-amber-200 transition" data-country="all">すべて</button>
-                    <button class="country-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-blue-200 transition" data-country="japan">日本</button>
-                    <button class="country-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-red-200 transition" data-country="europe">ヨーロッパ</button>
-                    <button class="country-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-indigo-200 transition" data-country="usa">アメリカ</button>
-                    <button class="country-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-green-200 transition" data-country="korea">韓国</button>
-                </div>
-            </div>
-            
-            <div class="filter-group">
-                <h3 class="font-semibold mb-2 text-gray-700">系統で探す</h3>
-                <div class="flex flex-wrap gap-2">
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-pink-200 transition" data-style="all">すべて</button>
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-rose-200 transition" data-style="beauty">綺麗系</button>
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-purple-200 transition" data-style="mode">モード系</button>
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-blue-300 transition" data-style="tech">テック系</button>
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition" data-style="street">ストリート</button>
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-yellow-200 transition" data-style="amekaji">アメカジ</button>
-                    <button class="style-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-red-300 transition" data-style="korean">韓国系</button>
-                </div>
-            </div>
-            
-            <div class="search-group w-full md:w-auto">
-                <div class="relative">
-                    <input type="text" id="search-input" placeholder="ブランド名 or デザイナー名" class="px-4 py-2 rounded-full border w-full md:w-64">
-                    <button id="search-btn" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 本棚 -->
-        <div class="bookshelf p-6 md:p-8 mb-16">
-            <div id="books-container" class="flex flex-wrap gap-4 justify-center">
-                <!-- 書籍がここに動的に追加されます -->
-            </div>
-        </div>
-        
-        <!-- ブランド詳細（最初は非表示） -->
-        <div id="brand-detail" class="hidden fade-in mb-20">
-            <div class="flex justify-between items-center mb-6">
-                <h2 id="brand-name" class="text-3xl font-bold"></h2>
-                <button id="back-to-shelf" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition">
-                    <i class="fas fa-arrow-left mr-2"></i>本棚に戻る
-                </button>
-            </div>
-            
-            <div class="magazine-layout md:flex gap-8">
-                <!-- 左ページ -->
-                <div class="magazine-page p-6 md:p-8 mb-8 md:mb-0 rounded-lg md:w-1/2">
-                    <div class="flex items-center justify-between mb-8">
-                        <div id="brand-logo-container" class="w-1/3">
-                            <!-- ブランドロゴがここに表示されます -->
-                        </div>
-                        <div id="brand-color-container" class="w-2/3 h-16 rounded flex shadow">
-                            <!-- ブランドのイメージカラーがここに表示されます -->
-                        </div>
-                    </div>
-                    
-                    <div class="prose max-w-none">
-                        <h3 class="text-xl font-bold mb-4 border-b pb-2">ブランドの歴史</h3>
-                        <div id="brand-history" class="timeline">
-                            <!-- タイムラインがここに表示されます -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 右ページ -->
-                <div class="magazine-page p-6 md:p-8 rounded-lg md:w-1/2">
-                    <div class="prose max-w-none">
-                        <h3 class="text-xl font-bold mb-4 border-b pb-2">歴代デザイナー</h3>
-                        <div id="designers-list" class="mb-6">
-                            <!-- デザイナーリストがここに表示されます -->
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-4 border-b pb-2">定番商品</h3>
-                        <div id="standard-products" class="grid grid-cols-2 gap-4 mb-6">
-                            <!-- 定番商品がここに表示されます -->
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-4 border-b pb-2">今季ルック</h3>
-                        <div id="current-collection" class="mb-6">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f7e8659e-b9ba-4e25-b961-57de061b4167.png" alt="今季のコレクション" class="rounded shadow mb-2 w-full">
-                            <p id="collection-description" class="text-sm text-gray-600"></p>
-                        </div>
-                        
-                        <h3 class="text-xl font-bold mb-4 border-b pb-2">公式リンク</h3>
-                        <div id="official-links" class="flex gap-4">
-                            <!-- 公式リンクがここに表示されます -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-8 p-6 bg-gray-50 rounded-lg">
-                <h3 class="text-xl font-bold mb-4 border-b pb-2">関連ブランド</h3>
-                <div id="related-brands" class="flex overflow-x-auto gap-4 py-2">
-                    <!-- 関連ブランドがここに表示されます -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 簡易管理画面 -->
-    <div id="admin-panel" class="fixed bottom-4 right-4 bg-white p-4 rounded-lg shadow-xl hidden">
-        <h3 class="font-bold mb-2">ブランド追加</h3>
-        <div class="mb-2">
-            <input type="text" id="new-brand-name" placeholder="ブランド名" class="border p-2 w-full">
-        </div>
-        <button id="add-brand" class="bg-blue-500 text-white px-4 py-2 rounded">追加</button>
-    </div>
-    <button id="toggle-admin" class="fixed bottom-4 right-4 bg-gray-800 text-white p-3 rounded-full text-xl">
-        <i class="fas fa-cog"></i>
-    </button>
-
-    <script>
-        // 管理画面表示切り替え
-        document.getElementById('toggle-admin').addEventListener('click', function() {
-            const panel = document.getElementById('admin-panel');
-            panel.classList.toggle('hidden');
-        });
-
-        // ブランド追加機能
-        document.getElementById('add-brand').addEventListener('click', function() {
-            const name = document.getElementById('new-brand-name').value;
-            if (!name) return;
-            
-            const newBrand = {
-                id: brands.length + 1,
-                name: name,
-                country: "japan",
-                styles: [],
-                color: "#" + Math.floor(Math.random()*16777215).toString(16),
-                logo: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a7748803-94e6-4e16-a985-2da0af2dd17c.png" + encodeURIComponent(name),
-                history: [],
-                designers: [],
-                products: [],
-                collection: { image: "", description: "" },
-                links: [],
-                related: []
-            };
-            
-            brands.push(newBrand);
-            renderBooks();
-            this.parentNode.reset();
-        });
-        // ブランドデータ
-        const brands = [
-            {
-                id: 7,
-                name: "新規ブランド名",
-                country: "japan", 
-                styles: ["mode"],
-                color: "#123456",
-                logo: "https://ブランドロゴのURL",
-                history: [
-                    { year: 2000, event: "設立" }
-                ],
-                designers: [
-                    { name: "デザイナー名", bio: "経歴" }
-                ],
-                products: [
-                    { name: "商品名", price: "¥10,000", image: "https://商品画像URL", link: "商品ページURL" }
-                ],
-                collection: {
-                    image: "https://コレクション画像URL", 
-                    description: "コレクションの説明"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" }
-                ],
-                related: []
-            },
-            {
-                id: 1,
-                name: "Comme des Garçons",
-                country: "japan",
-                styles: ["mode"],
-                color: "#000000",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Comme_des_Gar%C3%A7ons_Logo.svg/1280px-Comme_des_Gar%C3%A7ons_Logo.svg.png",
-                history: [
-                    { year: 1969, event: "川久保玲が東京で設立" },
-                    { year: 1981, event: "パリコレデビュー" },
-                    { year: 1992, event: "PLAYライン発売" }
-                ],
-                designers: [
-                    { name: "川久保玲", link: "#", bio: "日本のファッションデザイナー" }
-                ],
-                products: [
-                    { name: "PLAY ハートTシャツ", price: "¥15,000", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Comme_des_Gar%C3%A7ons_PLAY_heart_logo_tshirt.jpg/800px-Comme_des_Gar%C3%A7ons_PLAY_heart_logo_tshirt.jpg", link: "#" }
-                ],
-                collection: {
-                    image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d493a04-0c64-4448-9dcd-d5b38f23765c.png",
-                    description: "2024年春夏コレクションでは幾何学模様と大胆なシルエットが特徴"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" },
-                    { type: "instagram", url: "#", icon: "instagram" }
-                ],
-                related: [
-                    { name: "Junya Watanabe", id: 2 }
-                ]
-            },
-            {
-                id: 2,
-                name: "Junya Watanabe",
-                country: "japan",
-                styles: ["mode", "tech"],
-                color: "#333333",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Junya_Watanabe_logo.svg/1280px-Junya_Watanabe_logo.svg.png",
-                history: [
-                    { year: 1992, event: "Comme des Garçonsのデザイナーとして独立" },
-                    { year: 1993, event: "自身のブランド設立" }
-                ],
-                designers: [
-                    { name: "渡辺淳弥", link: "#", bio: "Comme des Garçons出身のデザイナー" }
-                ],
-                products: [
-                    { name: "デコンストラクション ジャケット", price: "¥65,000", image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67e1a24a-f044-463c-9ccd-ab589f4c838d.png", link: "#" }
-                ],
-                collection: {
-                    image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc92f238-0419-4bc8-9a2a-9946d8b31fb4.png",
-                    description: "テクノロジーと伝統の融合をテーマにしたコレクション"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" }
-                ],
-                related: [
-                    { name: "Comme des Garçons", id: 1 }
-                ]
-            },
-            {
-                id: 3,
-                name: "Yohji Yamamoto",
-                country: "japan",
-                styles: ["mode"],
-                color: "#111111",
-                logo: "https://1000logos.net/wp-content/uploads/2022/02/Yohji-Yamamoto-Logo.png",
-                history: [
-                    { year: 1972, event: "東京でブランド設立" },
-                    { year: 1981, event: "パリコレデビュー" }
-                ],
-                designers: [
-                    { name: "山本耀司", link: "#", bio: "日本の代表的なデザイナー" }
-                ],
-                products: [
-                    { name: "ドレープド ワンピース", price: "¥85,000", image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2620a639-2d82-48ad-b469-779c97cad1ea.png", link: "#" }
-                ],
-                collection: {
-                    image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/20d454f0-ea6c-41a6-9d81-8fc7c3401821.png",
-                    description: "2024年春夏は黒を基調としたドレープと流動的なシルエット"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" },
-                    { type: "instagram", url: "#", icon: "instagram" }
-                ],
-                related: []
-            },
-            {
-                id: 4,
-                name: "Balenciaga",
-                country: "europe",
-                styles: ["mode", "street"],
-                color: "#000000",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Balenciaga_logo.svg/1200px-Balenciaga_logo.svg.png",
-                history: [
-                    { year: 1917, event: "クリストバル・バレンシアガがスペインで設立" },
-                    { year: 1937, event: "パリに移転" },
-                    { year: 2015, event: "デムナ・ヴァザリアがクリエイティブディレクターに就任" }
-                ],
-                designers: [
-                    { name: "クリストバル・バレンシアガ", link: "#", bio: "創設者" },
-                    { name: "デムナ・ヴァザリア", link: "#", bio: "現クリエイティブディレクター" }
-                ],
-                products: [
-                    { name: "トラック スニーカー", price: "¥85,000", image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/15f8b3c5-68cb-41be-97d1-8275f57f8318.png", link: "#" }
-                ],
-                collection: {
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Balenciaga_RTW_SS22_21.jpg/800px-Balenciaga_RTW_SS22_21.jpg",
-                    description: "ストリートウェアとハイファッションの融合を追求したコレクション"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" },
-                    { type: "instagram", url: "#", icon: "instagram" }
-                ],
-                related: []
-            },
-            {
-                id: 5,
-                name: "Supreme",
-                country: "usa",
-                styles: ["street"],
-                color: "#FF0000",
-                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Supreme_2016_logo.svg/1200px-Supreme_2016_logo.svg.png",
-                history: [
-                    { year: 1994, event: "ニューヨークでジェームズ・ジェブラが設立" },
-                    { year: 2017, event: "The Carlyle Groupに一部売却" }
-                ],
-                designers: [
-                    { name: "ジェームズ・ジェブラ", link: "#", bio: "創設者" }
-                ],
-                products: [
-                    { name: "ボックスロゴ Tシャツ", price: "¥12,000", image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5f1a3e74-d3b9-4f03-82a4-d7b0da8b0b8a.png", link: "#" }
-                ],
-                collection: {
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Supreme_store_Lafayette_St.jpg/800px-Supreme_store_Lafayette_St.jpg",
-                    description: "ストリートカルチャーを象徴するアイテムが揃う"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" },
-                    { type: "instagram", url: "#", icon: "instagram" }
-                ],
-                related: []
-            },
-            {
-                id: 6,
-                name: "We11done",
-                country: "korea",
-                styles: ["korean", "street"],
-                color: "#000000",
-                logo: "https://1000logos.net/wp-content/uploads/2022/02/We11done-Logo.png",
-                history: [
-                    { year: 2015, event: "韓国のセレブグループ 'Rare Market' によって設立" }
-                ],
-                designers: [
-                    { name: "ジョン・ウージン", bio: "共同創設者" }
-                ],
-                products: [
-                    { name: "オーバーサイズ デニムジャケット", price: "¥65,000", image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/364916d9-32d0-40e3-9db8-fe998b7785d2.png", link: "#" }
-                ],
-                collection: {
-                    image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/731e9c02-f619-444f-8756-3a15aa6a848f.png",
-                    description: "グローバルな感覚と韓国独自のスタイルを融合"
-                },
-                links: [
-                    { type: "website", url: "#", icon: "globe" },
-                    { type: "instagram", url: "#", icon: "instagram" }
-                ],
-                related: []
-            }
-        ];
-
-        // DOM要素
-        const booksContainer = document.getElementById('books-container');
-        const brandDetail = document.getElementById('brand-detail');
-        const backToShelfBtn = document.getElementById('back-to-shelf');
-        const searchInput = document.getElementById('search-input');
-        const searchBtn = document.getElementById('search-btn');
-        const countryFilters = document.querySelectorAll('.country-filter');
-        const styleFilters = document.querySelectorAll('.style-filter');
-        
-        // 選択されたフィルター
-        let selectedCountry = 'all';
-        let selectedStyle = 'all';
-        
-        // 初期表示
-        window.addEventListener('DOMContentLoaded', () => {
-            renderBooks();
-            
-            // イベントリスナー
-            backToShelfBtn.addEventListener('click', () => {
-                brandDetail.classList.add('hidden');
-                document.getElementById('brand-detail').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            searchBtn.addEventListener('click', searchBrands);
-            searchInput.addEventListener('keyup', (e) => {
-                if (e.key === 'Enter') {
-                    searchBrands();
-                }
-            });
-            
-            countryFilters.forEach(filter => {
-                filter.addEventListener('click', () => {
-                    selectedCountry = filter.dataset.country;
-                    updateActiveFilterButtons(countryFilters, selectedCountry);
-                    renderBooks();
-                });
-            });
-            
-            styleFilters.forEach(filter => {
-                filter.addEventListener('click', () => {
-                    selectedStyle = filter.dataset.style;
-                    updateActiveFilterButtons(styleFilters, selectedStyle);
-                    renderBooks();
-                });
-            });
-        });
-        
-        // 本を描画する関数
-        function renderBooks() {
-            booksContainer.innerHTML = '';
-            
-            const filteredBrands = brands.filter(brand => {
-                const countryMatch = selectedCountry === 'all' || brand.country === selectedCountry;
-                const styleMatch = selectedStyle === 'all' || brand.styles.includes(selectedStyle);
-                return countryMatch && styleMatch;
-            });
-            
-            if (filteredBrands.length === 0) {
-                booksContainer.innerHTML = '<p class="text-white">条件に合うブランドが見つかりませんでした</p>';
-                return;
-            }
-            
-            filteredBrands.forEach(brand => {
-                const book = document.createElement('div');
-                book.className = 'book-spine flex flex-col items-center justify-center p-4 rounded w-24 h-52';
-                book.style.backgroundColor = brand.color;
-                book.setAttribute('data-brand-id', brand.id);
-                
-                const logoImg = document.createElement('img');
-                logoImg.src = brand.logo;
-                logoImg.alt = `${brand.name} ロゴ`;
-                logoImg.className = 'brand-logo mb-2';
-                
-                const brandName = document.createElement('div');
-                brandName.textContent = brand.name;
-                brandName.className = 'text-center text-sm font-bold';
-                
-                book.appendChild(logoImg);
-                book.appendChild(brandName);
-                book.addEventListener('click', () => showBrandDetail(brand.id));
-                
-                booksContainer.appendChild(book);
-            });
-        }
-        
-        // ブランド詳細を表示する関数
-        function showBrandDetail(brandId) {
-            const brand = brands.find(b => b.id === brandId);
-            if (!brand) return;
-            
-            // ブランド名
-            document.getElementById('brand-name').textContent = brand.name;
-            
-            // ロゴ
-            const logoContainer = document.getElementById('brand-logo-container');
-            logoContainer.innerHTML = '';
-            const logoImg = document.createElement('img');
-            logoImg.src = brand.logo;
-            logoImg.alt = `${brand.name} ロゴ`;
-            logoImg.className = 'w-full';
-            logoContainer.appendChild(logoImg);
-            
-            // イメージカラー
-            const colorContainer = document.getElementById('brand-color-container');
-            colorContainer.innerHTML = '';
-            colorContainer.style.backgroundColor = brand.color;
-            colorContainer.innerHTML = `<div class="p-2 font-mono text-white text-sm">${brand.color}</div>`;
-            
-            // 歴史（タイムライン）
-            const historyContainer = document.getElementById('brand-history');
-            historyContainer.innerHTML = '';
-            brand.history.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'timeline-item';
-                itemDiv.innerHTML = `
-                    <div class="font-bold">${item.year}</div>
-                    <div>${item.event}</div>
-                `;
-                historyContainer.appendChild(itemDiv);
-            });
-            
-            // デザイナー
-            const designersContainer = document.getElementById('designers-list');
-            designersContainer.innerHTML = '';
-            brand.designers.forEach(designer => {
-                const designerDiv = document.createElement('div');
-                designerDiv.className = 'mb-2 p-2 bg-gray-100 rounded';
-                designerDiv.innerHTML = `
-                    <div class="font-semibold">${designer.name}</div>
-                    <div class="text-sm text-gray-600">${designer.bio}</div>
-                `;
-                designersContainer.appendChild(designerDiv);
-            });
-            
-            // 定番商品
-            const productsContainer = document.getElementById('standard-products');
-            productsContainer.innerHTML = '';
-            brand.products.forEach(product => {
-                const productDiv = document.createElement('div');
-                productDiv.className = 'bg-white p-2 rounded shadow hover:shadow-lg transition';
-                productDiv.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="w-full mb-2">
-                    <div class="font-semibold">${product.name}</div>
-                    <div class="text-sm text-amber-600">${product.price}</div>
-                    <a href="${product.link}" class="text-xs text-blue-500">詳細を見る</a>
-                `;
-                productsContainer.appendChild(productDiv);
-            });
-            
-            // 今季ルック
-            document.getElementById('current-collection').querySelector('img').src = brand.collection.image;
-            document.getElementById('current-collection').querySelector('img').alt = `${brand.name} 今季コレクション`;
-            document.getElementById('collection-description').textContent = brand.collection.description;
-            
-            // 公式リンク
-            const linksContainer = document.getElementById('official-links');
-            linksContainer.innerHTML = '';
-            brand.links.forEach(link => {
-                const linkA = document.createElement('a');
-                linkA.href = link.url;
-                linkA.className = 'p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition';
-                linkA.innerHTML = `<i class="fab fa-${link.icon} fa-lg"></i>`;
-                linksContainer.appendChild(linkA);
-            });
-            
-            // 関連ブランド
-            const relatedContainer = document.getElementById('related-brands');
-            relatedContainer.innerHTML = '';
-            brand.related.forEach(related => {
-                const relatedBrand = brands.find(b => b.id === related.id);
-                if (!relatedBrand) return;
-                
-                const relatedDiv = document.createElement('div');
-                relatedDiv.className = 'flex flex-col items-center flex-shrink-0 p-3 bg-white rounded shadow hover:shadow-md transition cursor-pointer';
-                relatedDiv.setAttribute('data-brand-id', relatedBrand.id);
-                
-                const relatedLogo = document.createElement('img');
-                relatedLogo.src = relatedBrand.logo;
-                relatedLogo.alt = `${relatedBrand.name} ロゴ`;
-                relatedLogo.className = 'h-12 mb-1';
-                
-                const relatedName = document.createElement('div');
-                relatedName.textContent = relatedBrand.name;
-                relatedName.className = 'text-xs text-center';
-                
-                relatedDiv.appendChild(relatedLogo);
-                relatedDiv.appendChild(relatedName);
-                relatedDiv.addEventListener('click', () => showBrandDetail(relatedBrand.id));
-                
-                relatedContainer.appendChild(relatedDiv);
-            });
-            
-            // 表示切り替え
-            brandDetail.classList.remove('hidden');
-            brandDetail.scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // ブランド検索
-        function searchBrands() {
-            const query = searchInput.value.toLowerCase();
-            if (!query.trim()) {
-                renderBooks();
-                return;
-            }
-            
-            const results = brands.filter(brand => {
-                const nameMatch = brand.name.toLowerCase().includes(query);
-                
-                const designerMatch = brand.designers.some(designer => 
-                    designer.name.toLowerCase().includes(query)
-                );
-                
-                return nameMatch || designerMatch;
-            });
-            
-            booksContainer.innerHTML = '';
-            
-            if (results.length === 0) {
-                booksContainer.innerHTML = '<p class="text-white">検索結果がありません</p>';
-                return;
-            }
-            
-            results.forEach(brand => {
-                const book = document.createElement('div');
-                book.className = 'book-spine flex flex-col items-center justify-center p-4 rounded w-24 h-52';
-                book.style.backgroundColor = brand.color;
-                book.setAttribute('data-brand-id', brand.id);
-                
-                const logoImg = document.createElement('img');
-                logoImg.src = brand.logo;
-                logoImg.alt = `${brand.name} ロゴ`;
-                logoImg.className = 'brand-logo mb-2';
-                
-                const brandName = document.createElement('div');
-                brandName.textContent = brand.name;
-                brandName.className = 'text-center text-sm font-bold';
-                
-                book.appendChild(logoImg);
-                book.appendChild(brandName);
-                book.addEventListener('click', () => showBrandDetail(brand.id));
-                
-                booksContainer.appendChild(book);
-            });
-        }
-        
-        // フィルターボタンの状態更新
-        function updateActiveFilterButtons(buttons, selectedValue) {
-            buttons.forEach(button => {
-                if (button.dataset[Object.keys(button.dataset)[0]] === selectedValue) {
-                    button.classList.add('bg-gray-800', 'text-white');
-                    button.classList.remove('bg-gray-200', 'hover:bg-gray-300');
-                } else {
-                    button.classList.remove('bg-gray-800', 'text-white');
-                    button.classList.add('bg-gray-200', 'hover:bg-gray-300');
-                }
-            });
-        }
-    </script>
-
-    <!-- Supabase設定 -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script>
-        const supabaseUrl = 'あなたのSupabaseURL';
-        const supabaseKey = 'あなたのSupabaseKey';
-        const supabase = createClient(supabaseUrl, supabaseKey);
-        
-        // ブランドデータ取得をSupabaseから
-        async function loadBrands() {
-            const { data, error } = await supabase
-                .from('brands')
-                .select('*');
-            
-            if (data) {
-                brands = data;
-                renderBooks();
-            }
-        }
-        
-        loadBrands();
-    </script>
-</body>
-</html>
+　const brands = [
+  {
+    id: 'yohjiyamamoto',
+    name: 'Yohji Yamamoto',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/yohjiyamamoto_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'yoke',
+    name: 'YOKE',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/yoke_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'undercover',
+    name: 'UNDERCOVER',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/undercover_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'stein',
+    name: 'stein',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/stein_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'sacai',
+    name: 'sacai',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/sacai_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'johnlawrencesullivan',
+    name: 'JOHN LAWRENCE SULLIVAN',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/johnlawrencesullivan_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'nhoolywood',
+    name: 'N-HOOLYWOOD',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/nhoolywood_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'attachment',
+    name: 'ATTACHMENT',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/attachment_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'auralee',
+    name: 'AURALEE',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/auralee_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'commedesgarcons',
+    name: 'COMME des GARÇONS',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/commedesgarcons_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'comoli',
+    name: 'COMOLI',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/comoli_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'ladmusician',
+    name: 'LAD MUSICIAN',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/ladmusician_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'hommeplisse',
+    name: 'HOMME PLISSÉ ISSEY MIYAKE',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/hommeplisse_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'kolor',
+    name: 'kolor',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/kolor_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'doublet',
+    name: 'doublet',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/doublet_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'universalproducts',
+    name: 'UNIVERSAL PRODUCTS',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/universalproducts_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'teatora',
+    name: 'TEÄTORA',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/teatora_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'akm',
+    name: 'AKM',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/akm_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'sunsea',
+    name: 'SUNSEA',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/sunsea_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  },
+  {
+    id: 'y3',
+    name: 'Y-3',
+    category: '',
+    founded: '',
+    founder: '',
+    headquarters: '',
+    style: '',
+    logo: 'images/y3_logo.jpg',
+    description: '',
+    history: '',
+    evolution: '',
+    iconicItems: [],
+    relatedBrands: [],
+    designer: {
+      name: '',
+      bio: '',
+      philosophy: ''
+    }
+  }
+];
