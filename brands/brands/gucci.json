@@ -1,0 +1,52 @@
+{
+  "name": "GUCCI",
+  "founded": "1921年",
+  "founder": "グッチオ・グッチ",
+  "style": "ラグジュアリー、革新",
+  "logo": "https://1000logos.net/wp-content/uploads/2017/05/Gucci-logo.png",
+  "description": "GUCCI（グッチ）は1921年にイタリア・フィレンツェで創業。上質なレザー製品から始まり、今ではファッション界をリードするラグジュアリーブランドとして君臨。アイコニックなGGパターンやホースビットなど、伝統を活かしながら革新を続ける。",
+  "iconicItems": [
+    {
+      "name": "ホースビットローファー",
+      "description": "1953年に登場し、今も定番のローファー。",
+      "image": "https://images.gucci.com/images/cms/2023/10/GUCCI_Horsebit_Mens_Loafers.jpg",
+      "price": "¥110,000"
+    },
+    {
+      "name": "GGキャンバスバッグ",
+      "description": "GUCCIの象徴的なGGパターンを使ったトート。",
+      "image": "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1674855214/724634_FAB9T_9795_001_100_0000_Light-GG-Supreme-canvas-tote-bag.jpg",
+      "price": "¥140,000"
+    },
+    {
+      "name": "バンブーハンドルバッグ",
+      "description": "竹製の持ち手が特徴的なクラシックアイテム。",
+      "image": "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1678193869/702732_U3ZDT_1000_001_100_0000_Light-Gucci-Bamboo-1947-small-top-handle-bag.jpg",
+      "price": "¥250,000"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "サバト・デ・サルノ",
+      "bio": "2023年よりGUCCIのクリエイティブディレクターに就任。",
+      "philosophy": "クラシックとモダンの融合を探求。"
+    },
+    "previous": [
+      {
+        "name": "アレッサンドロ・ミケーレ",
+        "years": "2015–2022",
+        "note": "ヴィンテージ美学を導入しGUCCIを再ブレイク。"
+      },
+      {
+        "name": "フリーダ・ジャンニーニ",
+        "years": "2006–2015",
+        "note": "フェミニンで洗練された美学を確立。"
+      },
+      {
+        "name": "トム・フォード",
+        "years": "1994–2004",
+        "note": "セクシーでモダンなグッチの黄金期を築く。"
+      }
+    ]
+  }
+}
