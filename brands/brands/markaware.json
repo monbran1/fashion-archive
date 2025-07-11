@@ -1,0 +1,37 @@
+{
+  "name": "MARKAWARE",
+  "country": "日本",
+  "founded": "2009年",
+  "founder": "石川俊介",
+  "style": "エシカル・サステナブル・ミニマル",
+  "logo": "https://www.markaware.jp/wp-content/themes/markaware/images/common/logo.svg",
+  "description": "MARKAWARE（マーカウェア）は、環境や労働に配慮した素材選びを行い、製造工程までも透明にする“エシカルファッション”を体現するブランド。テーラードを軸にしながら、ミニマルで現代的なウェアを提案している。",
+  "iconicItems": [
+    {
+      "name": "コンフォートフィットシャツ",
+      "description": "オーガニックコットン100％使用のワイドシルエットシャツ。",
+      "image": "https://www.markaware.jp/wp-content/uploads/2023/03/markaware-shirt.jpg",
+      "price": "¥26,400"
+    },
+    {
+      "name": "オーガニックウールトラウザー",
+      "description": "環境配慮素材で仕立てられた定番スラックス。",
+      "image": "https://www.markaware.jp/wp-content/uploads/2023/03/markaware-wooltrousers.jpg",
+      "price": "¥39,600"
+    },
+    {
+      "name": "スーパー120’sウールジャケット",
+      "description": "上質なスーパー120'sウール使用の軽量ジャケット。",
+      "image": "https://www.markaware.jp/wp-content/uploads/2023/03/markaware-jacket.jpg",
+      "price": "¥71,500"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "石川俊介",
+      "bio": "環境問題への意識からエシカルファッションを志し、2009年にMARKAWAREをスタート。デザインだけでなく素材調達から縫製まで一貫して管理。",
+      "philosophy": "人と環境にやさしい、持続可能なファッションを追求。"
+    },
+    "previous": []
+  }
+}
