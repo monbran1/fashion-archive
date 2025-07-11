@@ -1,0 +1,53 @@
+{
+  "name": "Louis Vuitton",
+  "country": "フランス",
+  "founded": "1854年",
+  "founder": "ルイ・ヴィトン",
+  "style": "ラグジュアリー・アイコニック・クラフトマンシップ",
+  "logo": "https://1000logos.net/wp-content/uploads/2017/05/Louis-Vuitton-logo.png",
+  "description": "Louis Vuitton（ルイ・ヴィトン）は1854年に創業されたフランスの高級ブランド。トランク職人から始まり、モノグラムキャンバスやダミエなどのアイコンを生み出し、現在ではファッション・アート・音楽との融合にも力を入れる世界的メゾン。",
+  "iconicItems": [
+    {
+      "name": "スピーディ・バッグ",
+      "description": "モノグラム柄の定番ボストン型ハンドバッグ。",
+      "image": "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-speedy-bandouli%C3%A8re-25-monogram-canvas-handbags--M41113_PM2_Front%20view.jpg",
+      "price": "¥226,600"
+    },
+    {
+      "name": "キーポル・バンドリエール",
+      "description": "旅行バッグの定番。アイコン的な存在。",
+      "image": "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-keepall-bandouli%C3%A8re-50-monogram-canvas-travel--M41416_PM2_Front%20view.jpg",
+      "price": "¥334,400"
+    },
+    {
+      "name": "アークライトスニーカー",
+      "description": "未来的なシルエットの人気スニーカー。",
+      "image": "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lv-archlight-sneaker-shoes--1A43ZP_PM2_Front%20view.jpg",
+      "price": "¥154,000"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "ファレル・ウィリアムス",
+      "bio": "2023年にメンズ アーティスティック・ディレクターに就任。音楽・アート・カルチャーを融合させた革新的な提案が話題。",
+      "philosophy": "自由と多様性の表現をファッションで。"
+    },
+    "previous": [
+      {
+        "name": "ヴァージル・アブロー",
+        "years": "2018–2021",
+        "note": "ストリートとラグジュアリーを融合した象徴的な存在。"
+      },
+      {
+        "name": "キム・ジョーンズ",
+        "years": "2011–2018",
+        "note": "モダンテーラリングをベースに世界的評価を得る。"
+      },
+      {
+        "name": "マーク・ジェイコブス",
+        "years": "1997–2013（ウィメンズ）",
+        "note": "LVにファッションの概念を持ち込んだ革命的人物。"
+      }
+    ]
+  }
+}
