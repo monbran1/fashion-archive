@@ -1,0 +1,36 @@
+{
+  "name": "AURALEE",
+  "founded": "2015年",
+  "founder": "岩井良太",
+  "style": "上質素材・ミニマル",
+  "logo": "https://cdn.store.studious.co.jp/uploads/brand/logo/13/logo.jpg",
+  "description": "AURALEE（オーラリー）は「素材からデザインする」という思想のもと、日本国内で厳選された上質素材を使ったミニマルな服作りを行うブランド。無駄を削ぎ落とした洗練されたシルエットと色使いで、多くのファッションファンから支持されている。",
+  "iconicItems": [
+    {
+      "name": "フィンクスシャツ",
+      "description": "超長綿フィンクスコットンを使用した高密度シャツ。",
+      "image": "https://cdn.store.studious.co.jp/uploads/item_image/114643/114643-1.jpg",
+      "price": "¥28,000"
+    },
+    {
+      "name": "ウールスラックス",
+      "description": "高品質なウールを使った定番テーパードスラックス。",
+      "image": "https://cdn.store.studious.co.jp/uploads/item_image/118120/118120-1.jpg",
+      "price": "¥38,000"
+    },
+    {
+      "name": "リブニット",
+      "description": "ミニマルなフォルムが人気の定番リブ編みニット。",
+      "image": "https://cdn.store.studious.co.jp/uploads/item_image/117171/117171-1.jpg",
+      "price": "¥22,000"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "岩井良太",
+      "bio": "文化服装学院出身。コレクションブランドで経験を積み、2015年にAURALEEを設立。「素材からデザインする」をモットーに高品質で洗練された服を追求。",
+      "philosophy": "素材からデザインする"
+    },
+    "previous": []
+  }
+}
