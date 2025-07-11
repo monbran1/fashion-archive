@@ -1,0 +1,43 @@
+{
+  "name": "Cartier",
+  "country": "フランス",
+  "founded": "1847年",
+  "founder": "ルイ＝フランソワ・カルティエ",
+  "style": "ラグジュアリー・クラシック・タイムレス",
+  "logo": "https://1000logos.net/wp-content/uploads/2020/02/Cartier-Logo.png",
+  "description": "Cartier（カルティエ）は1847年にフランス・パリで創業した高級宝飾・時計ブランド。王族御用達の“王の宝石商”と称される。精巧なジュエリーと革新的な時計デザインで、世界中のセレブリティを魅了し続けている。",
+  "iconicItems": [
+    {
+      "name": "LOVEブレスレット",
+      "description": "ドライバーで開閉する愛の象徴的アイテム。",
+      "image": "https://media.cartier.com/image/upload/q_auto:best,f_auto,w_800/cartier-love-bracelet-yellow-gold.jpg",
+      "price": "¥990,000〜"
+    },
+    {
+      "name": "タンク フランセーズ",
+      "description": "直線的デザインが特徴の定番時計。",
+      "image": "https://media.cartier.com/image/upload/q_auto:best,f_auto,w_800/cartier-tank-francaise-watch.jpg",
+      "price": "¥660,000〜"
+    },
+    {
+      "name": "Juste un Clou リング",
+      "description": "釘モチーフの斬新なデザインリング。",
+      "image": "https://media.cartier.com/image/upload/q_auto:best,f_auto,w_800/cartier-juste-un-clou-ring.jpg",
+      "price": "¥420,000〜"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "ピエール・レーヌ",
+      "bio": "カルティエの現行コレクションの監修責任者として、伝統と現代のバランスを追求。",
+      "philosophy": "芸術性と職人技を融合させたジュエリーづくり。"
+    },
+    "previous": [
+      {
+        "name": "ジャン＝ジャック・カルティエ",
+        "years": "1920s–1970s",
+        "note": "ロンドン支店でタンクやパンテールなど名作を展開。"
+      }
+    ]
+  }
+}
