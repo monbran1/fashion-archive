@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>FASHION ARCHIVE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ファッションブランド図書館</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-screen-lg mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-12 text-center">FASHION ARCHIVE</h1>
-    <div id="brand-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-  </div>
+<body>
+  <header>
+    <h1>ファッションブランド図書館</h1>
+    <input type="text" id="searchBar" placeholder="ブランド名で検索..." oninput="searchBrands()" />
+  </header>
+  
+  <main id="bookshelf"></main>
 
   <script src="script.js"></script>
 </body>
