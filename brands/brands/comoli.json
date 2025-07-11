@@ -1,0 +1,37 @@
+{
+  "name": "COMOLI",
+  "country": "日本",
+  "founded": "2011年",
+  "founder": "小森啓二郎",
+  "style": "日常着、リラックス、上質素材",
+  "logo": "https://cdn.fashionsnap.com/the-posts/wp-content/uploads/2023/07/comoli-logo-001.jpg",
+  "description": "COMOLI（コモリ）は2011年、小森啓二郎により設立された日本のブランド。「全ての洋服は、ある目的のために作られている」という思想のもと、日本の気候や生活環境に合った日常着を提案する。",
+  "iconicItems": [
+    {
+      "name": "コットンシルクジャケット",
+      "description": "軽量で着心地の良い定番アウター。",
+      "image": "https://cdn.fashionsnap.com/the-posts/wp-content/uploads/2023/05/comoli-cotton-silk.jpg",
+      "price": "¥88,000"
+    },
+    {
+      "name": "ウールギャバジンパンツ",
+      "description": "絶妙なテーパードで人気のスラックス。",
+      "image": "https://cdn.fashionsnap.com/the-posts/wp-content/uploads/2023/05/comoli-gabardine-pants.jpg",
+      "price": "¥46,200"
+    },
+    {
+      "name": "バンドカラーシャツ",
+      "description": "ブランドを象徴するミニマルシャツ。",
+      "image": "https://cdn.fashionsnap.com/the-posts/wp-content/uploads/2023/05/comoli-band-shirt.jpg",
+      "price": "¥30,800"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "小森啓二郎",
+      "bio": "文化服装学院卒業後、様々なブランドで経験を積み、2011年にCOMOLIを立ち上げる。",
+      "philosophy": "気候・風土に合った洋服を作ること。"
+    },
+    "previous": []
+  }
+}
