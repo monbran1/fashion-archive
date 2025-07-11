@@ -1,0 +1,53 @@
+{
+  "name": "DIOR",
+  "country": "フランス",
+  "founded": "1946年",
+  "founder": "クリスチャン・ディオール",
+  "style": "エレガント・フェミニン・ラグジュアリー",
+  "logo": "https://1000logos.net/wp-content/uploads/2020/04/Dior-logo.png",
+  "description": "DIOR（ディオール）は1946年、クリスチャン・ディオールによってパリで創設されたブランド。1947年の“ニュールック”で戦後モード界に革命を起こし、今もエレガンスの象徴として世界中で愛されている。",
+  "iconicItems": [
+    {
+      "name": "レディ ディオール",
+      "description": "ダイアナ妃も愛した定番バッグ。",
+      "image": "https://www.dior.com/couture/ecommerce/media/catalog/product/l/a/1649238377_M0538ONGE_M900_E01_GH.jpg",
+      "price": "¥700,000〜"
+    },
+    {
+      "name": "ブックトート",
+      "description": "DIORのロゴ刺繍が印象的な大型トート。",
+      "image": "https://www.dior.com/couture/ecommerce/media/catalog/product/g/a/1649772079_M1296ZRIW_M928_E01_GH.jpg",
+      "price": "¥430,000〜"
+    },
+    {
+      "name": "オブリークジャカードスニーカー",
+      "description": "モノグラム柄の人気スニーカー。",
+      "image": "https://www.dior.com/couture/ecommerce/media/catalog/product/d/j/1652714144_3SN265ZRI_H565_E01_GH.jpg",
+      "price": "¥130,000〜"
+    }
+  ],
+  "designer": {
+    "current": {
+      "name": "キム・ジョーンズ",
+      "bio": "2018年からDIORメンズのアーティスティックディレクター。ストリートとクチュールを融合させたスタイルが特徴。",
+      "philosophy": "伝統を尊重しつつ現代性を追求。"
+    },
+    "previous": [
+      {
+        "name": "ジョン・ガリアーノ",
+        "years": "1996–2011",
+        "note": "幻想的で演劇的なコレクションでブランドを再定義。"
+      },
+      {
+        "name": "ラフ・シモンズ",
+        "years": "2012–2015",
+        "note": "ミニマルかつ建築的な美学を提案。"
+      },
+      {
+        "name": "マリア・グラツィア・キウリ",
+        "years": "2016–現在（ウィメンズ）",
+        "note": "女性らしさとフェミニズムを反映したデザイン。"
+      }
+    ]
+  }
+}
