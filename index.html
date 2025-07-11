@@ -1,20 +1,115 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>FASHION ARCHIVE</title>
-  <script src="js/brands.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <h1>FASHION ARCHIVE</h1>
-  <div id="brand-list"></div>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 text-center">FASHION ARCHIVE</h1>
+    <div id="brand-list" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+  </div>
+
+  <!-- 🔽 ブランドデータをここに直書き -->
   <script>
+    const brands = [
+      {
+        id: 'markaware',
+        name: 'MARKAWARE',
+        founded: '2013年',
+        founder: '石川俊介',
+        style: 'サステナブル、ミニマル',
+        logo: 'https://cdn.store.studious.co.jp/uploads/brand/logo/74/logo.jpg',
+        description: 'MARKAWAREは2013年に石川俊介によって設立された、日本のサステナブルファッションブランド。ミニマリズムと高品質な素材を融合し、現代的で長
+
+最高、了解です！  
+じゃあ **iPhoneでもコピペだけで使える「1ファイル構成のHTMLコード」** をここに貼るね。  
+まずは試しに「MARKAWARE」の情報だけ入れた例をお届けします👇
+
+---
+
+## ✅ `index.html` にそのまま貼り付けてOKなコード（全部入り）
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>FASHION ARCHIVE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 text-center">FASHION ARCHIVE</h1>
+    <div id="brand-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  </div>
+
+  <script>
+    const brands = [
+      {
+        id: 'markaware',
+        name: 'MARKAWARE',
+        founded: '2013年',
+        founder: '石川俊介',
+        style: 'サステナブル、ミニマル',
+        logo: 'https://cdn.store.studious.co.jp/uploads/brand/logo/74/logo.jpg',
+        description: 'MARKAWAREは、石川俊介によって2013年に設立された日本のブランド。環境に配慮したオーガニック素材を使用し、無駄のないデザインを追求するサステナブルブランド。',
+        history: '設立当初から天然素材やトレーサビリティに配慮した素材調達を行い、国内外で高い評価を得ている。ファッション業界における環境配慮の先駆者的存在でもある。',
+        designer: {
+          name: '石川俊介',
+          bio: '文化服装学院卒。大手ブランド勤務を経て、2013年にMARKAWAREを立ち上げる。素材選びから縫製に至るまで「長く着られる服」にこだわる。',
+          philosophy: '「服を通じて、社会と環境の課題に向き合う。」を理念とする。'
+        },
+        iconicItems: [
+          {
+            name: 'オーガニックウールジャケット',
+            description: '自然農法で育てられた羊毛を使用した高品質ジャケット。',
+            image: 'https://cdn.store.studious.co.jp/uploads/item_image/703/703-1.jpg',
+            price: '¥68,000'
+          },
+          {
+            name: 'オーガニックコットンシャツ',
+            description: '柔らかい風合いと肌触りが特徴の定番シャツ。',
+            image: 'https://cdn.store.studious.co.jp/uploads/item_image/704/704-1.jpg',
+            price: '¥24,000'
+          },
+          {
+            name: 'サステナブルトラウザーズ',
+            description: '機能性と上品さを両立したテーパードパンツ。',
+            image: 'https://cdn.store.studious.co.jp/uploads/item_image/705/705-1.jpg',
+            price: '¥32,000'
+          }
+        ]
+      }
+    ];
+
+    // 表示処理
     const container = document.getElementById('brand-list');
     brands.forEach(brand => {
       const div = document.createElement('div');
+      div.className = "bg-white p-4 rounded shadow hover:shadow-lg transition";
       div.innerHTML = `
-        <h2>${brand.name}</h2>
-        <img src="${brand.logo}" alt="${brand.name} logo" width="120" />
+        <img src="${brand.logo}" alt="${brand.name} logo" class="h-20 mx-auto object-contain mb-4">
+        <h2 class="text-xl font-bold text-center mb-2">${brand.name}</h2>
+        <p class="text-sm text-center text-gray-600 mb-2">${brand.founded} / ${brand.founder}</p>
+        <p class="text-sm text-center text-gray-500 mb-4">${brand.style}</p>
+        <p class="text-sm mb-4">${brand.description}</p>
+        <h3 class="text-md font-semibold mt-4 mb-2">定番アイテム</h3>
+        <div class="space-y-2">
+          ${brand.iconicItems.map(item => `
+            <div class="border rounded p-2">
+              <img src="${item.image}" alt="${item.name}" class="h-32 w-full object-cover mb-2 rounded">
+              <p class="font-semibold">${item.name}</p>
+              <p class="text-sm text-gray-600">${item.description}</p>
+              <p class="text-sm text-right text-gray-800 mt-1">${item.price}</p>
+            </div>
+          `).join('')}
+        </div>
+        <h3 class="text-md font-semibold mt-4 mb-1">デザイナー：<span class="text-burgundy underline">${brand.designer.name}</span></h3>
+        <p class="text-sm mb-1">${brand.designer.bio}</p>
+        <p class="text-sm text-gray-600 italic">哲学：「${brand.designer.philosophy}」</p>
       `;
       container.appendChild(div);
     });
