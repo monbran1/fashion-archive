@@ -1,0 +1,25 @@
+{
+  "name": "YOKE",
+  "country": "日本",
+  "designer": [
+    {
+      "name": "寺田典夫",
+      "link": "https://www.fashion-press.net/brands/5275"
+    }
+  ],
+  "history": "2018年に寺田典夫が設立した日本のファッションブランド。「繋ぐ」をコンセプトに、衣服と人、過去と現在、様々な要素を繋ぐようなデザインを展開。",
+  "concept": "ブランド名の『YOKE（ヨーク）』は、服の背中の切り替え部分“ヨーク”や、“つなぐ”という意味から。ミニマルでクリーンな中にストーリーを感じさせるデザインが特徴。",
+  "logo": "https://www.fashion-press.net/img/news/5275/YOKE_logo.jpg",
+  "items": [
+    {
+      "name": "オーバーサイズテーラードジャケット",
+      "price": "¥63,800",
+      "image": "https://cdn.fashionstore.jp/images/item/original/550/342/YK22AW0019JK0201.jpg"
+    },
+    {
+      "name": "ウールスラックスパンツ",
+      "price": "¥39,600",
+      "image": "https://cdn.fashionstore.jp/images/item/original/550/342/YK22AW0019PT0201.jpg"
+    }
+  ]
+}
