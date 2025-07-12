@@ -1,0 +1,25 @@
+{
+  "name": "AURALEE",
+  "country": "日本",
+  "designer": [
+    {
+      "name": "岩井良太",
+      "link": "https://ja.wikipedia.org/wiki/%E5%B2%A9%E4%BA%95%E8%89%AF%E5%A4%AA"
+    }
+  ],
+  "history": "2015年に岩井良太によって設立された日本のファッションブランド。素材への強いこだわりと、シンプルで洗練されたデザインで知られています。",
+  "concept": "『素材づくりからがデザイン』をコンセプトに、上質な天然素材と日本国内の高い縫製技術を活かした、クリーンかつ現代的な服作り。",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/AURALEE_logo.svg/320px-AURALEE_logo.svg.png",
+  "items": [
+    {
+      "name": "ライトウールシャツ",
+      "price": "¥38,500",
+      "image": "https://auralee.jp/cdn/shop/products/A23SS01SH_BEIGE_1_1200x.jpg"
+    },
+    {
+      "name": "スーパーソフトスウェット",
+      "price": "¥30,800",
+      "image": "https://auralee.jp/cdn/shop/products/A23SS02SW_1200x.jpg"
+    }
+  ]
+}
